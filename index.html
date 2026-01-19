@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valentine's Card Maker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="front-page" class="page">
+    <h1>Happy Valentine's Day 💖</h1>
+    <button id="open-card" class="heart-btn">❤️</button>
+  </div>
+
+  <div id="card-builder" class="page hidden">
+    <h2>Your Valentine’s Card</h2>
+
+    <div class="image-upload-container">
+      <input type="file" accept="image/*" id="img1" />
+      <input type="file" accept="image/*" id="img2" />
+      <input type="file" accept="image/*" id="img3" />
+    </div>
+
+    <div id="card-preview">
+      <div class="photo-slot" id="photo1"></div>
+      <div class="photo-slot" id="photo2"></div>
+      <div class="photo-slot" id="photo3"></div>
+      <textarea
+        id="message"
+        placeholder="Write your unique message..."
+      ></textarea>
+    </div>
+
+    <button id="download-btn">Download Card</button>
+  </div>
+
+  <script src="html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
