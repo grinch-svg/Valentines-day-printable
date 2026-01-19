@@ -1,146 +1,67 @@
-/* GENERAL PAGE STYLING */
-body {
-  font-family: 'Arial', sans-serif;
-  background: #ffe6f0;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+// ------------------------------
+// 1️⃣ SHOW BACK PAGE WHEN HEART IS CLICKED
+// ------------------------------
+document.getElementById("open-card").addEventListener("click", () => {
+  document.getElementById("front-page").classList.add("hidden");
+  document.getElementById("card-builder").classList.remove("hidden");
+});
+
+// ------------------------------
+// 2️⃣ IMAGE UPLOADS (SCATTERED PHOTOS)
+// ------------------------------
+function handleImageUpload(inputEl, targetDiv) {
+  inputEl.addEventListener("change", () => {
+    const file = inputEl.files[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      const photo = document.getElementById(targetDiv);
+      photo.style.backgroundImage = `url(${url})`;
+
+      // Random rotation and position within card
+      const x = Math.floor(Math.random() * (document.getElementById('card-preview').offsetWidth - 120));
+      const y = Math.floor(Math.random() * (document.getElementById('card-preview').offsetHeight - 120));
+      const angle = Math.floor(Math.random() * 30 - 15); // -15 to +15 deg
+      photo.style.left = x + "px";
+      photo.style.top = y + "px";
+      photo.style.transform = `rotate(${angle}deg)`;
+    }
+  });
 }
 
-#card-container {
-  position: relative;
+handleImageUpload(document.getElementById("img1"), "photo1");
+handleImageUpload(document.getElementById("img2"), "photo2");
+handleImageUpload(document.getElementById("img3"), "photo3");
+
+// ------------------------------
+// 3️⃣ RANDOM FLOATING DECORATIONS ON FRONT PAGE
+// ------------------------------
+function randomizeFloating() {
+  const floats = document.querySelectorAll('.floating');
+  floats.forEach(el => {
+    const x = Math.floor(Math.random() * (window.innerWidth - 60));
+    const y = Math.floor(Math.random() * (window.innerHeight - 60));
+    const duration = Math.random() * 5 + 5; // 5–10 seconds
+    const scale = Math.random() * 0.5 + 0.75; // 0.75–1.25 scale
+
+    el.style.setProperty('--start-x', x + 'px');
+    el.style.setProperty('--start-y', y + 'px');
+    el.style.animationDuration = duration + 's';
+    el.style.transform = `scale(${scale})`;
+  });
 }
 
-/* PAGE STYLING */
-.page {
-  min-height: 100vh;
-  padding: 40px;
-  text-align: center;
-  position: relative;
-}
+// Run once when page loads
+window.addEventListener('load', randomizeFloating);
 
-.hidden {
-  display: none;
-}
-
-/* FRONT PAGE */
-.front-title {
-  font-family: 'Pacifico', cursive;
-  font-size: 60px;
-  color: #ff3366;
-  text-shadow: 0 0 20px #ff99cc, 0 0 40px #ff6699;
-  margin-bottom: 20px;
-}
-
-.heart-btn {
-  font-size: 60px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  animation: pulse 1.5s infinite;
-}
-
-/* BACK PAGE */
-.back-title {
-  font-family: 'Sacramento', cursive;
-  font-size: 50px;
-  color: #ff6699;
-  text-shadow: 0 0 15px #ff99cc;
-  margin-bottom: 20px;
-}
-
-#card-preview {
-  position: relative;
-  background: #fff8ff;
-  padding: 20px;
-  border-radius: 20px;
-  width: 80%;
-  max-width: 600px;
-  margin: 0 auto;
-  min-height: 400px;
-}
-
-/* SCATTERED PHOTO SLOTS */
-.photo-slot {
-  width: 120px;
-  height: 120px;
-  border: 2px dashed #ff6699;
-  position: absolute; /* scattered positions */
-  background-size: cover;
-  background-position: center;
-  border-radius: 12px;
-  transform: rotate(calc(-15deg + 30deg*var(--i))); /* random rotation */
-}
-
-/* assign different positions */
-#photo1 { top: 20px; left: 30px; --i: 0; }
-#photo2 { top: 180px; left: 200px; --i: 1; }
-#photo3 { top: 100px; left: 350px; --i: 2; }
-
-textarea {
-  width: 90%;
-  height: 120px;
-  margin-top: 250px;
-  padding: 15px;
-  font-family: 'Pacifico', cursive;
-  font-size: 22px;
-  border: 2px solid #ff6699;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #ff99cc;
-}
-
-/* BUTTON */
-button {
-  font-size: 20px;
-  padding: 10px 20px;
-  margin-top: 20px;
-  cursor: pointer;
-  background: #ff3366;
-  border: none;
-  border-radius: 12px;
-  color: white;
-}
-
-/* FLOATING DECORATIONS */
-.floating {
-  /* FLOATING DECORATIONS RANDOM MOVEMENT */
-.floating {
-  position: absolute;
-  width: 60px;
-  pointer-events: none; /* so it doesn't block clicks */
-  animation: floatAnim linear infinite;
-}
-
-/* smaller versions */
-.floating.small { width: 40px; }
-
-/* different speeds */
-.heart { animation-duration: 6s; }
-.flower { animation-duration: 8s; }
-.cartoon { animation-duration: 10s; }
-
-/* random float keyframes: moves horizontally and vertically */
-@keyframes floatAnim {
-  0% {
-    transform: translate(var(--start-x, 0px), var(--start-y, 0px)) rotate(0deg);
-  }
-  25% {
-    transform: translate(calc(var(--start-x) + 20px), calc(var(--start-y) - 10px)) rotate(15deg);
-  }
-  50% {
-    transform: translate(calc(var(--start-x) - 15px), calc(var(--start-y) + 15px)) rotate(-10deg);
-  }
-  75% {
-    transform: translate(calc(var(--start-x) + 10px), calc(var(--start-y) - 5px)) rotate(10deg);
-  }
-  100% {
-    transform: translate(var(--start-x, 0px), var(--start-y, 0px)) rotate(0deg);
-  }
-}
-
-/* HEART BUTTON PULSE */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
+// ------------------------------
+// 4️⃣ DOWNLOAD FULL CARD (FRONT + BACK)
+// ------------------------------
+document.getElementById("download-btn").addEventListener("click", () => {
+  const cardContainer = document.getElementById("card-container");
+  html2canvas(cardContainer, {useCORS: true, allowTaint: true}).then(canvas => {
+    const link = document.createElement("a");
+    link.download = "valentine-card.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+});
