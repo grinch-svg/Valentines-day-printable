@@ -1,0 +1,64 @@
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  background: #ffe6e6;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.hidden {
+  display: none;
+}
+
+.heart-btn {
+  font-size: 60px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#card-preview {
+  background: #fff;
+  padding: 20px;
+  border: 2px solid #ff99cc;
+  border-radius: 12px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 500px;
+}
+
+.photo-slot {
+  width: 100px;
+  height: 100px;
+  border: 2px dashed #ff6699;
+  display: inline-block;
+  margin: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+textarea {
+  width: 90%;
+  height: 100px;
+  margin-top: 15px;
+  padding: 10px;
+  border: 2px solid #ff99cc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-top: 15px;
+  cursor: pointer;
+  background: #ff6699;
+  border: none;
+  border-radius: 8px;
+  color: white;
+}
