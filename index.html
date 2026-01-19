@@ -2,36 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Valentine's Card Maker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fun Valentine’s Card</title>
   <link rel="stylesheet" href="styles.css" />
+  <!-- Google Fonts for fun & flowery style -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Sacramento&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="front-page" class="page">
-    <h1>Happy Valentine's Day 💖</h1>
-    <button id="open-card" class="heart-btn">❤️</button>
-  </div>
+  <!-- Container for the full card (front + back) for download -->
+  <div id="card-container">
 
-  <div id="card-builder" class="page hidden">
-    <h2>Your Valentine’s Card</h2>
+    <!-- FRONT PAGE -->
+    <div id="front-page" class="page">
+      <h1 class="front-title">Happy Valentine's Day 💖</h1>
+      <button id="open-card" class="heart-btn">❤️</button>
 
-    <div class="image-upload-container">
-      <input type="file" accept="image/*" id="img1" />
-      <input type="file" accept="image/*" id="img2" />
-      <input type="file" accept="image/*" id="img3" />
+      <!-- floating hearts & flowers -->
+      <img src="images/heart1.png" class="floating heart" />
+      <img src="images/flower1.png" class="floating flower" />
+      <img src="images/cartoon1.png" class="floating cartoon" />
+      <img src="images/heart2.png" class="floating heart" />
+      <img src="images/flower2.png" class="floating flower" />
     </div>
 
-    <div id="card-preview">
-      <div class="photo-slot" id="photo1"></div>
-      <div class="photo-slot" id="photo2"></div>
-      <div class="photo-slot" id="photo3"></div>
-      <textarea
-        id="message"
-        placeholder="Write your unique message..."
-      ></textarea>
+    <!-- BACK PAGE -->
+    <div id="card-builder" class="page hidden">
+      <h2 class="back-title">Make it Yours 💐</h2>
+
+      <div class="image-upload-container">
+        <input type="file" accept="image/*" id="img1" />
+        <input type="file" accept="image/*" id="img2" />
+        <input type="file" accept="image/*" id="img3" />
+      </div>
+
+      <div id="card-preview">
+        <div class="photo-slot" id="photo1"></div>
+        <div class="photo-slot" id="photo2"></div>
+        <div class="photo-slot" id="photo3"></div>
+        <textarea id="message" placeholder="Write your unique message..."></textarea>
+      </div>
+
+      <button id="download-btn">Download Card</button>
+
+      <!-- optional background hearts/flowers -->
+      <img src="images/heart1.png" class="floating heart small" />
+      <img src="images/flower1.png" class="floating flower small" />
     </div>
 
-    <button id="download-btn">Download Card</button>
   </div>
 
   <script src="html2canvas.min.js"></script>
